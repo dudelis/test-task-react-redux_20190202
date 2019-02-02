@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getSampleData } from '../utils';
+import './DivList.css';
 
 class DivList extends Component{
     state = {
@@ -12,15 +13,15 @@ class DivList extends Component{
     }
 
     getDivItems = () =>{
-        return this.state.divList.map((item, index) => {
+        return this.state.divList.map(({height, color}, index) => {
             return (
                 <div
                     key={index}
                     className="div-item"
                     style={{
-                        width:'200px',
-                        height:item.height + 'px',
-                        backgroundColor: item.color
+                        height: height + 'px',
+                        backgroundColor: color,
+                        gridRowEnd: `span ${Math.ceil(height / 10)}`
                     }}>
                 </div>
             )

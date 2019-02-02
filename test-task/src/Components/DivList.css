@@ -1,0 +1,11 @@
+.div-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-gap: 0 10px;
+    grid-auto-rows: 10px;
+    justify-content: center;
+}
+
+.div-list .div-item {
+    width: 200px;
+}
