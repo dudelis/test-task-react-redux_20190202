@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-import { getSampleData } from '../utils';
+import { connect } from 'react-redux';
+import { getData } from '../actions';
+
 import './DivList.css';
 
 class DivList extends Component{
-    state = {
-        divList: [],
-        selected: null
-    }
-
     componentDidMount(){
-        this.setState({divList: getSampleData(30, 100, 300)})
+        this.props.getData(30, 100, 300);
     }
 
     getDivItems = () =>{
-        return this.state.divList.map(({height, color}, index) => {
+        return this.props.data.map(({height, color}, index) => {
             return (
                 <div
                     key={index}
@@ -36,4 +33,10 @@ class DivList extends Component{
         )
     }
 }
-export default DivList;
+const mapStateToProps = ({sample}) => {
+    return {
+        data: sample.data,
+        selectedIndex: sample.index
+    }
+}
+export default connect(mapStateToProps, {getData})(DivList);

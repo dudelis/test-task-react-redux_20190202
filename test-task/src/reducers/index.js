@@ -1,3 +1,7 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({});
+import sampleReducer from './sampleReducer';
+
+export default combineReducers({
+    sample: sampleReducer
+});
