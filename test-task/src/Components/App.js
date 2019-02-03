@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import DivList from './DivList';
+import TileList from './TileList';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <DivList />
+        <TileList />
       </div>
     );
   }

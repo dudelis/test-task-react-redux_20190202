@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { getData, selectItem } from '../actions';
-import DivItem from './DivItem';
-import './DivList.css';
+import Tile from './Tile';
+import './TileList.css';
 
-class DivList extends Component{
+class TileList extends Component{
     
     componentDidMount(){
         this.props.getData(30, 100, 300);
@@ -24,14 +24,14 @@ class DivList extends Component{
     getDivItems = () =>{
         return this.props.data.map(({height, color}, index) => {
             return (
-                <DivItem height={height} color ={color} key={index} toggle={(e) => this.toggle(e, index)} />
+                <Tile height={height} color ={color} key={index} toggle={(e) => this.toggle(e, index)} />
             )
         })
     }
 
     render(){
         return(
-            <div className="div-list">
+            <div className="tile-list">
                 {this.getDivItems()}
             </div>
         )
@@ -43,4 +43,4 @@ const mapStateToProps = ({sample}) => {
         selectedIndex: sample.index
     }
 }
-export default connect(mapStateToProps, {getData, selectItem})(DivList);
+export default connect(mapStateToProps, {getData, selectItem})(TileList);

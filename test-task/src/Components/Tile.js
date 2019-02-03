@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import posed from 'react-pose';
 
-import './DivItem.css';
+import './Tile.css';
 
 
 const transition = {
@@ -29,7 +29,7 @@ const Div = posed.div({
   });
 
 
-class DivItem extends Component {
+class Tile extends Component {
     state = {isZoomed: false}
 
     zoomIn = () => {
@@ -51,7 +51,7 @@ class DivItem extends Component {
 
         return(
             <div
-                className="div-item"
+                className="tile-item"
                 onClick = {this.clickHandler}
                 style={{
                     height: height + 'px',
@@ -64,4 +64,4 @@ class DivItem extends Component {
     }
 }
 
-export default DivItem;
+export default Tile;
