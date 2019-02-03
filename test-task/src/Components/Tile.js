@@ -5,7 +5,7 @@ import './Tile.css';
 
 
 const transition = {
-    duration: 400,
+    duration: 1000,
     ease: [0.08, 0.69, 0.2, 0.99]
   };
 
@@ -25,6 +25,16 @@ const Div = posed.div({
       bottom: 0,
       transition,
       flip: true
+    }
+  });
+  const Frame = posed.div({
+    zoom: {
+      applyAtStart: { display: 'block' },
+      opacity: 0.6
+    },
+    init: {
+      applyAtEnd: { display: 'none' },
+      opacity: 0
     }
   });
 
@@ -54,11 +64,10 @@ class Tile extends Component {
                 onClick = {this.clickHandler}
                 style={{
                     height: height + 'px',
-                    backgroundColor: color,
-                    zIndex: 1
+                    backgroundColor: color
                 }}>
-                <Div pose={pose} {...props} style={{backgroundColor: color}}/>
-               
+                <Frame className="frame" pose={pose} {...props}/>
+                <Div pose={pose} {...props} style={{backgroundColor: color}}/>                
             </div>
         )
     }
