@@ -12,8 +12,8 @@ const transition = {
 const Div = posed.div({
     init: {
       position: 'static',
-      width: 'auto',
-      height: 'auto',
+      width: '100%',
+      height: '100%',
       transition,
       flip: true
     },
@@ -27,7 +27,6 @@ const Div = posed.div({
       flip: true
     }
   });
-
 
 class Tile extends Component {
     state = {isZoomed: false}
@@ -56,9 +55,10 @@ class Tile extends Component {
                 style={{
                     height: height + 'px',
                     backgroundColor: color,
-                    gridRowEnd: `span ${Math.ceil(height / 10)}`
+                    zIndex: 1
                 }}>
                 <Div pose={pose} {...props} style={{backgroundColor: color}}/>
+               
             </div>
         )
     }

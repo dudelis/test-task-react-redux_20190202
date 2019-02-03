@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+//import Masonry from 'react-masonry-layout';
 
 import { getData, selectItem } from '../actions';
 import Tile from './Tile';
-import './TileList.css';
+import Masonry from './Masonry';
 
 class TileList extends Component{
     
@@ -31,9 +32,9 @@ class TileList extends Component{
 
     render(){
         return(
-            <div className="tile-list">
+            <Masonry brakePoints = {[220, 440, 660, 880, 1100, 1320, 1540]}>
                 {this.getDivItems()}
-            </div>
+            </Masonry>
         )
     }
 }
