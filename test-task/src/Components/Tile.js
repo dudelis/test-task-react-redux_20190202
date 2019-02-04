@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import posed from 'react-pose';
+import { connect } from 'react-redux';
 
+import { selectItem } from '../actions';
 import './Tile.css';
 
 
@@ -42,22 +44,33 @@ class Tile extends Component {
     state = {isZoomed: false}
 
     zoomIn = () => {
+        this.props.selectItem(this.props.index);
         this.setState({isZoomed: true});
     }
 
     zoomOut = () => {
+        this.props.selectItem(null);
         this.setState({isZoomed: false});
     }
 
     clickHandler = () =>{
-        console.log(this.state);
         this.state.isZoomed ? this.zoomOut() : this.zoomIn()
     }
+    componentDidMount(){
+        if (this.props.index === this.props.selectedIndex && !this.state.isZoomed){
+            this.setState({isZoomed: true});
+        }
+    }
+    componentDidUpdate(){
+        if (this.props.index === this.props.selectedIndex && !this.state.isZoomed){
+            this.zoomIn();
+        }
+    }
+
     render(){
         const { isZoomed } = this.state;
         const {height, color, ...props} = this.props;
         const pose = isZoomed ? 'zoom' : 'init';      
-
         return(
             <div
                 className="tile-item"
@@ -73,4 +86,8 @@ class Tile extends Component {
     }
 }
 
-export default Tile;
+const mapStateToProps = (state) => {
+    return {selectedIndex: state.sample.index}
+}
+
+export default connect(mapStateToProps, {selectItem})(Tile);

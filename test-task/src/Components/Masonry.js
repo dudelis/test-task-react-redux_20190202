@@ -20,12 +20,11 @@ class Masonry extends Component{
     }
     
     onResize= () => {
-        console.log(this.refs.Masonry.offsetWidth);
-        const columns = this.getColumns(this.refs.Masonry.offsetWidth);
-        console.log(columns);
-		if(columns !== this.state.columns){
-			this.setState({columns: columns});	
-		}		
+      const columns = this.getColumns(this.refs.Masonry.offsetWidth);
+        
+			if(columns !== this.state.columns){
+				this.setState({columns: columns});	
+			}		
     }
     mapChildren(){
 		let col = [];
